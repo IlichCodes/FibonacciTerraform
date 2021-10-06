@@ -26,6 +26,12 @@ resource "azurerm_storage_account" "example" {
   account_replication_type = "LRS"
 }
 
+resource "azurerm_storage_container" "example" {
+  name                  = "example"
+  storage_account_name  = azurerm_storage_account.example.name
+  container_access_type = "private"
+}
+
 resource "azurerm_app_service_plan" "example" {
   name                = "azure-functions-test-service-plan"
   location            = azurerm_resource_group.example.location
@@ -38,7 +44,7 @@ resource "azurerm_app_service_plan" "example" {
 }
 
 resource "azurerm_function_app" "example" {
-  name                       = "test-azure-functions"
+  name                       = "slitvinov-azure-functions"
   location                   = azurerm_resource_group.example.location
   resource_group_name        = azurerm_resource_group.example.name
   app_service_plan_id        = azurerm_app_service_plan.example.id
