@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace Company.Function
 {
-    public static class FindFibonacci
+    public static class FindFibonacci1
     {
         [FunctionName("FindFibonacci")]
         [OpenApiOperation(operationId: "Run", tags: new[] { "name" })]
