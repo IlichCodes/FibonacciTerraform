@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   
 env:
-  AZURE_FUNCTIONAPP_NAME: slitvinov-azure-functions 
+  AZURE_FUNCTIONAPP_NAME: fibonacci-terraform-functions 
   AZURE_FUNCTION_PROJ_PATH: ./Source  
   ROOT_SOLUTION_PATH: ./Source 
 jobs:
