@@ -21,8 +21,8 @@ namespace Company.Function
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "FindFibonacci/{inputNumber}")] HttpRequest req, int inputNumber,
             ILogger log)
-        {            
-            if(inputNumber <= 0 || int.TryParse(inputNumber, out result))
+        {
+            if(inputNumber <= 0)
             {
                 return new OkObjectResult("Please submit valid number");         
             }
