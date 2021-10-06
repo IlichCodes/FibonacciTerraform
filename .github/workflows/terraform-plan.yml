@@ -22,6 +22,7 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory: ./Infrastructure
 
       - name: Terraform Format
         run: terraform fmt -check
