@@ -22,6 +22,7 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
+            int inputNumber = 6;
            int firstNumber = 0;
             int secondNumber = 1;
             int nextFibonacciNo = firstNumber + secondNumber;
