@@ -22,7 +22,7 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, int inputNumber,
             ILogger log)
         {            
-            if(inputNumber == undefined || inputNumber < 1)
+            if(inputNumber == 0)
             {
                 return new OkObjectResult("Please submit valid number");         
             }
