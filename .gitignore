@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Infrastructure/.terraform/providers/registry.terraform.io/hashicorp/azurerm/2.31.1/windows_amd64
 /Infrastructure/.terraform.lock.hcl
+/Infrastructure/.terraform/terraform.tfstate

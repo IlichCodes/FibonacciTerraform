@@ -1,4 +1,10 @@
 terraform {
+   backend "azurerm" {
+    resource_group_name  = "slitvinovstates"
+    storage_account_name = "slitvinovsa"
+    container_name       = "terraform-state"
+    key                  = "terraform.tfstate"
+  }
   required_providers{
       azurerm = {
           source = "hashicorp/azurerm"
@@ -13,29 +19,23 @@ provider "azurerm" {
     }  
 }
 
-resource "azurerm_resource_group" "example" {
-  name     = "azure-functions-test-rg"
+resource "azurerm_resource_group" "rg" {
+  name     = "fibonacci-terraform"
   location = "West Europe"
 }
 
-resource "azurerm_storage_account" "example" {
-  name                     = "functionslitvinov"
-  resource_group_name      = azurerm_resource_group.example.name
-  location                 = azurerm_resource_group.example.location
+resource "azurerm_storage_account" "sa" {
+  name                     = "fibonacciterraformsa"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
-resource "azurerm_storage_container" "example" {
-  name                  = "example"
-  storage_account_name  = azurerm_storage_account.example.name
-  container_access_type = "private"
-}
-
-resource "azurerm_app_service_plan" "example" {
-  name                = "azure-functions-test-service-plan"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+resource "azurerm_app_service_plan" "sp" {
+  name                = "fibonacci-terraform-sp"
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
 
   sku {
     tier = "Standard"
@@ -44,10 +44,10 @@ resource "azurerm_app_service_plan" "example" {
 }
 
 resource "azurerm_function_app" "example" {
-  name                       = "slitvinov-azure-functions"
-  location                   = azurerm_resource_group.example.location
-  resource_group_name        = azurerm_resource_group.example.name
-  app_service_plan_id        = azurerm_app_service_plan.example.id
-  storage_account_name       = azurerm_storage_account.example.name
-  storage_account_access_key = azurerm_storage_account.example.primary_access_key
+  name                       = "fibonacci-terraform-functions"
+  location                   = azurerm_resource_group.rg.location
+  resource_group_name        = azurerm_resource_group.rg.name
+  app_service_plan_id        = azurerm_app_service_plan.sp.id
+  storage_account_name       = azurerm_storage_account.sa.name
+  storage_account_access_key = azurerm_storage_account.sa.primary_access_key
 }
