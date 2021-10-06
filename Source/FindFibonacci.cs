@@ -22,8 +22,12 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            int inputNumber = 6;
-           int firstNumber = 0;
+            int inputNumber = req.Query["number"];
+            if(!inputNumber || inputNumber < 1)
+            {
+                return new OkObjectResult("Please submit valid number");         
+            }
+            int firstNumber = 0;
             int secondNumber = 1;
             int nextFibonacciNo = firstNumber + secondNumber;
             while (nextFibonacciNo <= inputNumber)
