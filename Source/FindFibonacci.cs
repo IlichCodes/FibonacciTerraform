@@ -22,7 +22,7 @@ namespace Company.Function
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "FindFibonacci/{inputNumber}")] HttpRequest req, int inputNumber,
             ILogger log)
         {            
-            if(inputNumber == 0)
+            if(inputNumber <= 0 || int.TryParse(inputNumber))
             {
                 return new OkObjectResult("Please submit valid number");         
             }
