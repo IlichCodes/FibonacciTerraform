@@ -16,8 +16,6 @@ public class fibonacci
             {
                 return new int[] { closestNumber, firstNumber, nextFibonacciNo };               
             }
-            return new int[] { closestNumber, secondNumber, nextFibonacciNo + secondNumber};
-
-            
+            return new int[] { closestNumber, secondNumber, nextFibonacciNo + secondNumber};            
         }
     }
