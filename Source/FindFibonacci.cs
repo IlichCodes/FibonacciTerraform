@@ -23,7 +23,7 @@ namespace Company.Function
             ILogger log)
         {
             int inputNumber = req.Query["number"];
-            if(!inputNumber == undefined || inputNumber < 1)
+            if(inputNumber == undefined || inputNumber < 1)
             {
                 return new OkObjectResult("Please submit valid number");         
             }
