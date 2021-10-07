@@ -12,14 +12,14 @@ using Newtonsoft.Json;
 
 namespace Company.Function
 {
-    public static class FindFibonacci
+    public static class FindInFibonacci
     {
-        [FunctionName("FindFibonacci")]
+        [FunctionName("FindInFibonacci")]
         [OpenApiOperation(operationId: "Run", tags: new[] { "name" })]
         [OpenApiParameter(name: "name", In = ParameterLocation.Query, Required = true, Type = typeof(string), Description = "The **Name** parameter")]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "FindFibonacci/{inputNumber}")] HttpRequest req, int inputNumber,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "FindInFibonacci/{inputNumber}")] HttpRequest req, int inputNumber,
             ILogger log)
         {  
             if(inputNumber <= 0 )
